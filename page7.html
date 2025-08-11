@@ -75,27 +75,26 @@
     © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
   </footer>
 
-<!-- ป๊อปอัพเข้าสู่ระบบ -->
-<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
-    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
-    <form id="loginForm">
-      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
-      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+  <!-- ป๊อปอัพเข้าสู่ระบบ -->
+  <div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+      <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+      <form id="loginForm">
+        <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+        <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
 
-      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
-      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+        <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+        <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
 
-      <form action="index.html" method="POST">
-  <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
-    ลงทะเบียน
-  </button>
-</form>
+        <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+          เข้าสู่ระบบ
+        </button>
+      </form>
 
-    <!-- ปุ่มปิด -->
-    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+      <!-- ปุ่มปิด -->
+      <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+    </div>
   </div>
-</div>
 
   <script>
     function toggleDropdown() {
@@ -128,11 +127,13 @@
         menu.classList.add("hidden");
       }
     });
+
+    // ตัวอย่าง: กด submit login modal แล้วปิด modal
     document.getElementById("loginForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
-  window.location.href = "index.html"; // ไปหน้าแรก
-});
+      e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+      alert("เข้าสู่ระบบเรียบร้อย!"); // แสดงข้อความ (แก้เป็นจริงตามระบบได้)
+      closeLoginModal();
+    });
   </script>
 </body>
 </html>
-

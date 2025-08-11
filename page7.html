@@ -38,7 +38,7 @@
       <h2 class="text-2xl font-bold mb-6 text-center">ลงทะเบียนสมาชิก</h2>
 
       <!-- ฟอร์มลงทะเบียน -->
-      <form action="index.html" method="POST" class="space-y-4">
+      <form id="registerForm" class="space-y-4" onsubmit="return false;">
         <div>
           <label class="block mb-1 text-sm font-medium">ชื่อ-นามสกุล</label>
           <input type="text" name="fullname" class="w-full border rounded px-3 py-2" required>
@@ -59,10 +59,10 @@
           <input type="password" name="confirm_password" class="w-full border rounded px-3 py-2" required>
         </div>
 
-        <button type="button" onclick="window.location.href='index.html';" 
-  class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
-  ลงทะเบียน
-</button>
+        <button type="submit" id="registerBtn" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+          ลงทะเบียน
+        </button>
+      </form>
 
       <p class="text-center text-sm text-gray-600 mt-4">
         มีบัญชีอยู่แล้ว? <a href="#" class="text-red-600 hover:underline" onclick="event.preventDefault(); openLoginModal();">เข้าสู่ระบบ</a>
@@ -128,13 +128,18 @@
       }
     });
 
-    // ตัวอย่าง: กด submit login modal แล้วปิด modal
+    // กดปุ่มลงทะเบียน -> ไปหน้า index.html
+    document.getElementById("registerBtn").addEventListener("click", function() {
+      // จะไม่ส่งฟอร์ม แค่พาไปหน้า index.html
+      window.location.href = "index.html";
+    });
+
+    // กด submit login modal แล้วปิด modal
     document.getElementById("loginForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // ไม่ให้รีเฟรชหน้า
-      alert("เข้าสู่ระบบเรียบร้อย!"); // แสดงข้อความ (แก้เป็นจริงตามระบบได้)
+      e.preventDefault();
+      alert("เข้าสู่ระบบเรียบร้อย!");
       closeLoginModal();
     });
   </script>
 </body>
 </html>
-

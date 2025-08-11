@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express - ค้นหาสาขา</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+    <nav class="space-x-4 relative flex items-center">
+      <a href="index.html" class="hover:underline">หน้าแรก</a>
+      <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+      <div class="inline-block relative">
+        <button onclick="toggleDropdown()" class="hover:underline focus:outline-none flex items-center gap-1">
+          บริการของเรา ▼
+        </button>
+        <div
+          id="dropdownMenu"
+          class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50"
+        >
+          <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+          <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+          <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+          <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+        </div>
+      </div>
+      <a href="#" class="hover:underline" onclick="openLoginModal()">เข้าสู่ระบบ</a>
+      <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-12 px-6 text-center max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-red-600 mb-6">ค้นหาสาขาใกล้คุณ</h2>
+    <p class="text-gray-700 mb-8">
+      ค้นหาสาขา SpeedGo Express ที่ใกล้คุณเพื่อรับบริการที่รวดเร็วและสะดวกสบาย
+    </p>
+
+    <div class="shadow rounded overflow-hidden">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.2040720210327!2d100.54937351480913!3d13.74345269035114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed04d92f713%3A0x3dbd0d758493d690!2z4Li54Liq4Lij4Lin4Lij4Lit4Liy4Liy4Lii4Liy4Lil4LiH4Liy4Lin4Liy4Lij4LmA4LiZ4LmJ4LiH4LiE4LmA4Liy4LiH4Liy!5e0!3m2!1sth!2sth!4v1689935707071!5m2!1sth!2sth"
+        width="100%"
+        height="500"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- ปุ่มกลับหน้าหลัก -->
+    <div class="mt-8">
+      <button onclick="goHome()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+        กลับหน้าหลัก
+      </button>
+    </div>
+  </main>
+
+<footer class="bg-red-600 text-white p-4 text-center mt-12">
+    © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
+  </footer>
+
+
+<!-- ป๊อปอัพเข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form id="loginForm">
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+  <!-- Script -->
+  <script>
+function goHome() {
+  window.location.href = 'index.html';
+}
+
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("hidden");
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.add("hidden");
+}
+
+function openLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.remove("hidden");
+}
+
+// ปิด login modal เมื่อคลิกนอกกล่อง login
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("loginModal");
+  if (modal && !modal.classList.contains("hidden") && event.target === modal) {
+    closeLoginModal();
+  }
+});
+
+// ปิด dropdown ถ้าคลิกนอกเมนู
+window.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const button = e.target.closest("button");
+  if (menu && !menu.contains(e.target) && !button) {
+    menu.classList.add("hidden");
+  }
+});
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+  window.location.href = "index.html"; // ไปหน้าแรก
+});
+  </script>
+
+</body>
+</html>

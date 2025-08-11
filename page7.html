@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express - ลงทะเบียน</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+    <nav class="space-x-4 relative flex items-center">
+      <a href="index.html" class="hover:underline">หน้าแรก</a>
+      <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+      <div class="inline-block relative">
+        <button onclick="toggleDropdown()" class="hover:underline focus:outline-none flex items-center gap-1">
+          บริการของเรา ▼
+        </button>
+        <div
+          id="dropdownMenu"
+          class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50"
+        >
+          <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+          <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+          <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+          <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+        </div>
+      </div>
+      <a href="#" class="hover:underline" onclick="event.preventDefault(); openLoginModal();">เข้าสู่ระบบ</a>
+      <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+    </nav>
+  </header>
+  
+  <!-- Main Content -->
+  <main class="flex justify-center items-center min-h-screen px-4">
+    <div class="bg-white rounded shadow-lg p-8 w-full max-w-md">
+      <h2 class="text-2xl font-bold mb-6 text-center">ลงทะเบียนสมาชิก</h2>
+
+      <!-- ฟอร์มลงทะเบียน -->
+      <form action="index.html" method="POST" class="space-y-4">
+        <div>
+          <label class="block mb-1 text-sm font-medium">ชื่อ-นามสกุล</label>
+          <input type="text" name="fullname" class="w-full border rounded px-3 py-2" required>
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm font-medium">อีเมล</label>
+          <input type="email" name="email" class="w-full border rounded px-3 py-2" required>
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm font-medium">รหัสผ่าน</label>
+          <input type="password" name="password" class="w-full border rounded px-3 py-2" required>
+        </div>
+
+        <div>
+          <label class="block mb-1 text-sm font-medium">ยืนยันรหัสผ่าน</label>
+          <input type="password" name="confirm_password" class="w-full border rounded px-3 py-2" required>
+        </div>
+
+        <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+          ลงทะเบียน
+        </button>
+      </form>
+
+      <p class="text-center text-sm text-gray-600 mt-4">
+        มีบัญชีอยู่แล้ว? <a href="#" class="text-red-600 hover:underline" onclick="event.preventDefault(); openLoginModal();">เข้าสู่ระบบ</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-red-600 text-white p-4 text-center">
+    © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
+  </footer>
+
+<!-- ป๊อปอัพเข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form id="loginForm">
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+
+  <script>
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+    }
+
+    function closeLoginModal() {
+      const modal = document.getElementById("loginModal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function openLoginModal() {
+      const modal = document.getElementById("loginModal");
+      if (modal) modal.classList.remove("hidden");
+    }
+
+    // ปิด login modal เมื่อคลิกนอกกล่อง
+    window.addEventListener("click", function(event) {
+      const modal = document.getElementById("loginModal");
+      if (modal && !modal.classList.contains("hidden") && event.target === modal) {
+        closeLoginModal();
+      }
+    });
+
+    // ปิด dropdown ถ้าคลิกนอก
+    window.addEventListener("click", function(e) {
+      const menu = document.getElementById("dropdownMenu");
+      const button = e.target.closest("button");
+      if (menu && !menu.contains(e.target) && !button) {
+        menu.classList.add("hidden");
+      }
+    });
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+  window.location.href = "index.html"; // ไปหน้าแรก
+});
+  </script>
+</body>
+</html>

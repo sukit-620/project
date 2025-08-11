@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express - เก็บเงินปลายทาง</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+    <nav class="space-x-4 relative flex items-center">
+      <a href="index.html" class="hover:underline">หน้าแรก</a>
+      <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+      <div class="inline-block relative">
+        <button onclick="toggleDropdown()" class="hover:underline focus:outline-none flex items-center gap-1">
+          บริการของเรา ▼
+        </button>
+<div
+  id="dropdownMenu"
+  class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50"
+>
+  <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+  <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+  <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+  <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+</div>
+      </div>
+      <a href="#" class="hover:underline" onclick="openLoginModal()">เข้าสู่ระบบ</a>
+      <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="py-12 px-6 text-center">
+    <h2 class="text-3xl font-bold text-red-600 mb-6">บริการเก็บเงินปลายทาง (COD)</h2>
+    <p class="max-w-2xl mx-auto text-lg text-gray-700 mb-8">
+      SpeedGo Express มีบริการเก็บเงินปลายทางสำหรับผู้ส่งที่ต้องการความสะดวก
+      และผู้รับที่ต้องการชำระเงินเมื่อได้รับพัสดุ เพื่อเพิ่มความมั่นใจและความปลอดภัยในการทำธุรกรรม
+    </p>
+
+    <!-- จุดเด่น -->
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="p-6 bg-white shadow rounded">
+        <img src="https://img.icons8.com/ios-filled/50/000000/money-bag.png" class="mx-auto mb-4" alt="ปลอดภัย">
+        <h3 class="font-bold text-xl mb-2">ปลอดภัย</h3>
+        <p class="text-gray-600">เงินจะถูกส่งคืนให้ผู้ขายอย่างรวดเร็วและปลอดภัย</p>
+      </div>
+      <div class="p-6 bg-white shadow rounded">
+        <img src="https://img.icons8.com/ios-filled/50/000000/handshake.png" class="mx-auto mb-4" alt="เชื่อถือได้">
+        <h3 class="font-bold text-xl mb-2">เชื่อถือได้</h3>
+        <p class="text-gray-600">เพิ่มความมั่นใจให้ผู้ซื้อ และลดความเสี่ยงการฉ้อโกง</p>
+      </div>
+      <div class="p-6 bg-white shadow rounded">
+        <img src="https://img.icons8.com/ios-filled/50/000000/delivery.png" class="mx-auto mb-4" alt="รวดเร็ว">
+        <h3 class="font-bold text-xl mb-2">รวดเร็ว</h3>
+        <p class="text-gray-600">จัดส่งและเก็บเงินถึงหน้าประตูอย่างรวดเร็ว</p>
+      </div>
+    </div>
+
+    <!-- ปุ่มกลับหน้าหลัก -->
+    <div class="mt-8">
+      <button onclick="goHome()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+        กลับหน้าหลัก
+      </button>
+    </div>
+  </main>
+
+  <!-- หน้าค้นหาสาขา -->
+  <div id="mapContent" class="hidden p-6">
+    <h2 class="text-2xl font-bold mb-4 text-center">ค้นหาสาขาใกล้คุณ</h2>
+    <div class="flex justify-center">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18..."
+        width="100%"
+        height="500"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        class="rounded shadow-lg"
+      ></iframe>
+    </div>
+    <div class="text-center mt-4">
+      <button
+        onclick="showHome()"
+        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+      >
+        ⬅ กลับหน้าหลัก
+      </button>
+    </div>
+  </div>
+
+  <!-- หน้า ลงทะเบียน -->
+  <div
+    id="registerContent"
+    class="hidden p-6 max-w-md mx-auto"
+  >
+    <h2 class="text-2xl font-bold mb-4 text-center">ลงทะเบียน</h2>
+    <form>
+      <input
+        type="text"
+        placeholder="ชื่อผู้ใช้"
+        class="w-full p-2 mb-3 border rounded"
+        required
+      />
+      <input
+        type="email"
+        placeholder="อีเมล"
+        class="w-full p-2 mb-3 border rounded"
+        required
+      />
+      <input
+        type="password"
+        placeholder="รหัสผ่าน"
+        class="w-full p-2 mb-3 border rounded"
+        required
+      />
+      <input
+        type="password"
+        placeholder="ยืนยันรหัสผ่าน"
+        class="w-full p-2 mb-3 border rounded"
+        required
+      />
+      <button
+        type="submit"
+        class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
+      >
+        สมัครสมาชิก
+      </button>
+    </form>
+    <div class="mt-4 text-center">
+      <button
+        onclick="showHome()"
+        class="text-blue-600 hover:underline"
+      >
+        ⬅ กลับหน้าหลัก
+      </button>
+    </div>
+  </div>
+
+<!-- ป๊อปอัพเข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form id="loginForm">
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+<footer class="bg-red-600 text-white p-4 text-center mt-12">
+    © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
+  </footer>
+
+  <!-- Script -->
+  <script>
+function goHome() {
+  window.location.href = 'index.html';
+}
+
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("hidden");
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.add("hidden");
+}
+
+function openLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.remove("hidden");
+}
+
+// ปิด login modal เมื่อคลิกนอกกล่อง login
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("loginModal");
+  if (modal && !modal.classList.contains("hidden") && event.target === modal) {
+    closeLoginModal();
+  }
+});
+
+// ปิด dropdown ถ้าคลิกนอกเมนู
+window.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const button = e.target.closest("button");
+  if (menu && !menu.contains(e.target) && !button) {
+    menu.classList.add("hidden");
+  }
+});
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+  window.location.href = "index.html"; // ไปหน้าแรก
+});
+  </script>
+</body>
+</html>

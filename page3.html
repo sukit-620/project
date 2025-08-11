@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express - เก็บเงินปลายทาง</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans bg-gray-100">
+
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+    <nav class="space-x-4 relative flex items-center">
+      <a href="index.html" class="hover:underline">หน้าแรก</a>
+      <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+      <div class="inline-block relative">
+        <button onclick="toggleDropdown()" class="hover:underline focus:outline-none flex items-center gap-1">
+          บริการของเรา ▼
+        </button>
+        <div
+          id="dropdownMenu"
+          class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50"
+        >
+          <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+          <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+          <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+          <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+        </div>
+      </div>
+      <a href="#" class="hover:underline" onclick="openLoginModal()">เข้าสู่ระบบ</a>
+      <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-8 text-center text-red-600">ขนส่งทั่วประเทศ</h2>
+
+    <!-- Intro -->
+    <div class="bg-white p-6 rounded shadow mb-12 text-center">
+      <p class="text-lg text-gray-700">
+        SpeedGo Express ให้บริการขนส่งครอบคลุมทั่วประเทศ ครอบคลุม 77 จังหวัด
+        ด้วยเครือข่ายการขนส่งที่รวดเร็วและปลอดภัย
+        พร้อมบริการส่งด่วนภายใน 1-2 วันทำการ และบริการ Same Day ในบางพื้นที่
+      </p>
+    </div>
+
+    <!-- Map & Info -->
+    <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+      <img src="k.png" alt="แผนที่ประเทศไทย" class="w-full md:w-1/2 rounded shadow" />
+      <ul class="space-y-3 text-lg text-gray-700">
+        <li>✔ ครอบคลุม 77 จังหวัดทั่วไทย</li>
+        <li>✔ ส่งด่วนภายใน 1-2 วันทำการ</li>
+        <li>✔ บริการ Same Day ในพื้นที่กำหนด</li>
+        <li>✔ ระบบติดตามพัสดุเรียลไทม์</li>
+        <li>✔ รับพัสดุถึงหน้าบ้านคุณ</li>
+      </ul>
+    </div>
+
+    <!-- Steps -->
+    <h3 class="text-2xl font-bold text-center mb-6 text-red-600">ขั้นตอนการขนส่ง</h3>
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-3xl mb-2">📦</div>
+        <h4 class="font-bold">รับพัสดุ</h4>
+        <p class="text-sm text-gray-600">รับจากจุดส่งหรือหน้าบ้าน</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-3xl mb-2">🏷</div>
+        <h4 class="font-bold">คัดแยก</h4>
+        <p class="text-sm text-gray-600">คัดแยกตามพื้นที่ปลายทาง</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-3xl mb-2">🚚</div>
+        <h4 class="font-bold">ขนส่ง</h4>
+        <p class="text-sm text-gray-600">ขนส่งด้วยเครือข่ายทั่วประเทศ</p>
+      </div>
+      <div class="bg-white p-6 rounded shadow text-center">
+        <div class="text-3xl mb-2">📬</div>
+        <h4 class="font-bold">ถึงมือผู้รับ</h4>
+        <p class="text-sm text-gray-600">ส่งตรงถึงมืออย่างปลอดภัย</p>
+      </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center mt-8">
+      <button onclick="goHome()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+        กลับหน้าหลัก
+      </button>
+    </div>
+  </main>
+
+  <!-- หน้าค้นหาสาขา -->
+  <div id="mapContent" class="hidden p-6">
+    <h2 class="text-2xl font-bold mb-4 text-center">ค้นหาสาขาใกล้คุณ</h2>
+    <div class="flex justify-center">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18..."
+        width="100%"
+        height="500"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        class="rounded shadow-lg"
+      ></iframe>
+    </div>
+    <div class="text-center mt-4">
+      <button
+        onclick="showHome()"
+        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+      >
+        ⬅ กลับหน้าหลัก
+      </button>
+    </div>
+  </div>
+
+<!-- ป๊อปอัพเข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form id="loginForm">
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="bg-red-600 text-white p-4 text-center mt-12">
+    © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
+  </footer>
+
+<script>
+function goHome() {
+  window.location.href = 'index.html';
+}
+
+function toggleDropdown() {
+  document.getElementById("dropdownMenu").classList.toggle("hidden");
+}
+
+function closeLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.add("hidden");
+}
+
+function openLoginModal() {
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.remove("hidden");
+}
+
+// ปิด login modal เมื่อคลิกนอกกล่อง login
+window.addEventListener("click", function(event) {
+  const modal = document.getElementById("loginModal");
+  if (modal && !modal.classList.contains("hidden") && event.target === modal) {
+    closeLoginModal();
+  }
+});
+
+// ปิด dropdown ถ้าคลิกนอกเมนู
+window.addEventListener("click", function(e) {
+  const menu = document.getElementById("dropdownMenu");
+  const button = e.target.closest("button");
+  if (menu && !menu.contains(e.target) && !button) {
+    menu.classList.add("hidden");
+  }
+});
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+  window.location.href = "index.html"; // ไปหน้าแรก
+});
+</script>
+
+</body>
+</html>

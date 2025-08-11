@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express - ผลการติดตามพัสดุ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+    <nav class="space-x-4 relative flex items-center">
+      <a href="index.html" class="hover:underline">หน้าแรก</a>
+      <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+      <div class="inline-block relative">
+        <button onclick="toggleDropdown()" class="hover:underline focus:outline-none flex items-center gap-1">
+          บริการของเรา ▼
+        </button>
+        <div id="dropdownMenu" class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50">
+          <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+          <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+          <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+          <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+        </div>
+      </div>
+      <a href="#" class="hover:underline" onclick="openLoginModal()">เข้าสู่ระบบ</a>
+      <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+    </nav>
+  </header>
+
+  <!-- เนื้อหาหลัก -->
+  <main class="p-6 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-center">ผลการติดตามพัสดุ</h2>
+
+    <div id="trackingInfo" class="bg-white p-6 rounded shadow text-center">
+      กำลังโหลดข้อมูล...
+    </div>
+
+    <div class="text-center mt-8">
+      <button onclick="goHome()" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">
+        กลับหน้าหลัก
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-red-600 text-white p-4 text-center mt-12">
+    © 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ
+  </footer>
+
+<!-- ป๊อปอัพเข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form id="loginForm">
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+
+
+  <script>
+    const mockParcelData = {
+      '12345': { arrivalDate: '30/08/2568', province: 'กรุงเทพมหานคร' },
+      '54321': { arrivalDate: '19/08/2568', province: 'เชียงใหม่' },
+      '67890': { arrivalDate: '29/08/2568', province: 'ขอนแก่น' }
+    };
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function showTrackingInfo() {
+      const trackingNumber = getQueryParam('tracking');
+      const container = document.getElementById('trackingInfo');
+
+      if (!trackingNumber) {
+        container.innerHTML = '<p class="text-red-600">ไม่พบเลขพัสดุ กรุณากลับไปกรอกใหม่</p>';
+        return;
+      }
+
+      const data = mockParcelData[trackingNumber];
+
+      if (!data) {
+        container.innerHTML = `<p class="text-red-600">ไม่พบข้อมูลพัสดุเลขพัสดุ: <strong>${trackingNumber}</strong></p>`;
+        return;
+      }
+
+      container.innerHTML = `
+        <p class="text-lg">เลขพัสดุ: <strong>${trackingNumber}</strong></p>
+        <p class="text-lg">คาดว่าจะถึงวันที่: <strong>${data.arrivalDate}</strong></p>
+        <p class="text-lg">จังหวัดปลายทาง: <strong>${data.province}</strong></p>
+      `;
+    }
+
+    function goHome() {
+      window.location.href = 'index.html';
+    }
+
+    function toggleDropdown() {
+      document.getElementById("dropdownMenu").classList.toggle("hidden");
+    }
+
+    function closeLoginModal() {
+      const modal = document.getElementById("loginModal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function openLoginModal() {
+      const modal = document.getElementById("loginModal");
+      if (modal) modal.classList.remove("hidden");
+    }
+
+    document.addEventListener("click", function(event) {
+      const dropdown = document.getElementById("dropdownMenu");
+      const isDropdownButton = event.target.closest("button");
+
+      if (!isDropdownButton && !dropdown.contains(event.target)) {
+        dropdown.classList.add("hidden");
+      }
+    });
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // ไม่ให้รีเฟรชหน้า
+  window.location.href = "index.html"; // ไปหน้าแรก
+});
+
+    window.onload = showTrackingInfo;
+  </script>
+</body>
+</html>

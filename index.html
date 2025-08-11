@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>SpeedGo Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans">
+
+<!-- Navbar -->
+<header class="bg-red-600 text-white px-4 py-3 flex justify-between items-center">
+  <h1 class="text-2xl font-bold">SpeedGo Express</h1>
+  <nav class="space-x-4 relative flex items-center">
+    <a href="index.html" class="hover:underline">หน้าแรก</a>
+    <a href="page2.html" class="hover:underline">ติดตามพัสดุ</a>
+    <div class="inline-block relative">
+      <button
+        onclick="toggleDropdown()"
+        class="hover:underline focus:outline-none flex items-center gap-1"
+        type="button"
+      >
+        บริการของเรา ▼
+      </button>
+      <div
+        id="dropdownMenu"
+        class="hidden absolute bg-white text-black mt-1 rounded shadow w-48 z-50"
+      >
+        <a href="page3.html" class="block px-4 py-2 hover:bg-gray-100">ขนส่งด่วนทั่วประเทศ</a>
+        <a href="page4.html" class="block px-4 py-2 hover:bg-gray-100">เก็บเงินปลายทาง</a>
+        <a href="page5.html" class="block px-4 py-2 hover:bg-gray-100">บริการลูกค้า 24 ชม.</a>
+        <a href="page6.html" class="block px-4 py-2 hover:bg-gray-100">ค้นหาสาขา</a>
+      </div>
+    </div>    
+    <a href="#" class="hover:underline" onclick="openLoginModal()">เข้าสู่ระบบ</a>
+    <a href="page7.html" class="hover:underline">ลงทะเบียน</a>
+
+    <!-- ตัวนับคนดู พร้อมหัวข้อ -->
+<div class="ml-6 flex flex-col items-center text-sm text-white bg-red-700 rounded px-3 py-1 shadow max-w-max">
+  <span class="font-semibold mb-1">👁‍🗨 ผู้เข้าชม</span>
+  <span class="flex items-center space-x-2">
+    <a href="https://www.free-counters.org/" class="underline hover:text-white">Free-Counters.org</a>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/auth.php?id=1c74e6f7f7f1976e6999924c0f1cd30f13e7f766"></script>
+    <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1374886/t/3"></script>
+  </span>
+</div>
+</header>
+
+
+  <!-- เนื้อหาหลัก -->
+  <div id="homeContent">
+
+    <!-- Hero -->
+    <section class="relative h-[500px] text-white flex items-center justify-center overflow-hidden">
+
+      <!-- วิดีโอพื้นหลัง -->
+      <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <source src="di.mp4" type="video/webm" />
+        <source src="di.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- ฟอร์มกรอกเลขพัสดุ -->
+      <div id="trackingForm" class="relative z-10 flex items-center justify-center w-full h-full">
+        <div class="bg-black bg-opacity-50 p-6 rounded text-center w-full max-w-lg">
+          <h2 class="text-3xl font-bold mb-4 text-white">ติดตามพัสดุของคุณได้ที่นี่</h2>
+          <input id="trackingInput" type="text" placeholder="กรอกหมายเลขพัสดุ" class="w-full px-4 py-2 rounded mb-4 text-black" />
+          <button onclick="goToPage2()" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-2 px-6 rounded">
+           ติดตาม
+          </button>
+        </div>
+      </div>
+    </section>
+
+<section class="py-12 px-6 text-center bg-gray-100">
+  <h3 class="text-2xl font-bold mb-6">บริการของเรา</h3>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="p-4 bg-white shadow rounded">
+      <img
+        src="https://img.icons8.com/ios-filled/50/000000/delivery.png"
+        class="mx-auto mb-2"
+      />
+      <h4 class="font-bold">ขนส่งด่วนทั่วประเทศ</h4>
+      <p>บริการจัดส่งพัสดุอย่างรวดเร็ว ครอบคลุมทุกพื้นที่</p>
+    </div>
+    <div class="p-4 bg-white shadow rounded">
+      <img
+        src="https://img.icons8.com/ios-filled/50/000000/truck.png"
+        class="mx-auto mb-2"
+      />
+      <h4 class="font-bold">ระบบติดตามพัสดุ</h4>
+      <p>สามารถติดตามพัสดุของคุณได้ทุกขั้นตอน</p>
+    </div>
+    <div class="p-4 bg-white shadow rounded">
+      <img
+        src="https://img.icons8.com/ios-filled/50/000000/customer-support.png"
+        class="mx-auto mb-2"
+      />
+      <h4 class="font-bold">บริการลูกค้า 24 ชม.</h4>
+      <p>พร้อมตอบทุกคำถาม และให้คำปรึกษา</p>
+    </div>
+  </div>
+
+  <!-- ปุ่มเล่นเพลง -->
+
+</section>
+
+    <!-- ติดต่อ -->
+    <section class="bg-white py-10 text-center relative">
+  <h3 class="text-2xl font-bold mb-4">ติดต่อเรา</h3>
+  <p>📍 12/3 ถนนเทคนิค อำเภอเมือง เชียงใหม่</p>
+  <p>📞 02-123-4567 | ✉️ support@speedgoexpress.com</p>
+  <p class="absolute right-0 bottom-0 mr-4 mb-4 bg-white px-3 py-1 rounded shadow">
+    📍 credit music : Nik Ko Phai
+  </p>
+</section>
+
+      <!-- ปุ่มค้นหาสาขา ลบออกไปแล้ว -->
+      <!-- <button
+        onclick="showMap()"
+        class="mt-4 inline-block bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
+      >
+        🔍 ค้นหาสาขา
+      </button> -->
+    </section>
+  </div>
+
+  <!-- ลบส่วน mapContent ออกไปแล้ว -->
+
+
+<!-- Modal เข้าสู่ระบบ -->
+<div id="loginModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded shadow-lg w-80 relative">
+    <h2 class="text-xl font-bold mb-4">เข้าสู่ระบบ</h2>
+    <form>
+      <label class="block mb-2 text-sm font-medium">ชื่อผู้ใช้</label>
+      <input type="email" class="w-full border rounded px-3 py-2 mb-4" placeholder="ชื่อผู้ใช้" required>
+
+      <label class="block mb-2 text-sm font-medium">รหัสผ่าน</label>
+      <input type="password" class="w-full border rounded px-3 py-2 mb-4" placeholder="กรอกรหัสผ่าน" required>
+
+      <button type="submit" class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+
+    <!-- ปุ่มปิด -->
+    <button onclick="closeLoginModal()" class="absolute top-2 right-3 text-gray-600 hover:text-black text-xl">&times;</button>
+  </div>
+</div>
+
+  <!-- Footer -->
+<footer class="bg-red-600 text-white p-4 relative flex items-center justify-center">
+  <!-- ปุ่มเพลง + ปรับเสียง (ซ้ายสุด) -->
+  <div class="absolute right-4 flex items-center space-x-3">
+    <button
+      id="playMusicBtn"
+      class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-1 px-4 rounded text-sm"
+    >
+      ▶ เล่นเพลง
+    </button>
+    <input
+      id="volumeControl"
+      type="range"
+      min="0"
+      max="1"
+      step="0.01"
+      value="0.5"
+      class="w-24"
+    />
+  </div>
+  <!-- ข้อความลิขสิทธิ์ (อยู่กลาง) -->
+  <span>© 2025 SpeedGo Express | ขนส่งไว ปลอดภัย ส่งตรงถึงมือคุณ</span>
+</footer>
+
+<audio id="myAudio" src="mi.mp3" ></audio>
+
+<script>
+  // ซ่อนทุก section ยกเว้นหน้าแรก
+  function hideAllSections() {
+    document.getElementById("homeContent").classList.add("hidden");
+    document.getElementById("registerContent").classList.add("hidden");
+    // ลบ mapContent แล้ว ไม่ต้องซ่อน
+  }
+  // แสดงหน้าแรก
+  function showHome() {
+    hideAllSections();
+    closeLoginModal();
+    document.getElementById("homeContent").classList.remove("hidden");
+  }
+  // ลบฟังก์ชัน showMap() ออกไปเลยหรือเขียนให้ซ่อนหมดแทน
+  function showMap() {
+    // ไม่มี mapContent ให้แสดง
+    hideAllSections();
+    closeLoginModal();
+  }
+  // แสดงหน้าลงทะเบียน
+  function showRegister() {
+    hideAllSections();
+    closeLoginModal();
+    document.getElementById("registerContent").classList.remove("hidden");
+  }
+
+  // เปิด modal ล็อกอิน
+  function openLoginModal() {
+    document.getElementById("loginModal").classList.remove("hidden");
+  }
+  // ปิด modal ล็อกอิน
+  function closeLoginModal() {
+    document.getElementById("loginModal").classList.add("hidden");
+  }
+
+  // ปิด login modal เมื่อคลิกนอกกล่อง login
+  window.addEventListener("click", function(event) {
+    const modal = document.getElementById("loginModal");
+    if (!modal.classList.contains("hidden") && event.target === modal) {
+      closeLoginModal();
+    }
+  });
+
+  // เมนู dropdown
+  function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.classList.toggle("hidden");
+  }
+  function goToPage2() {
+    const trackingNumber = document.getElementById('trackingInput').value.trim();
+    if (trackingNumber === '') {
+      alert('กรุณากรอกหมายเลขพัสดุ');
+      return;
+    }
+    // ส่งเลขพัสดุไปหน้า page2.html ผ่าน URL parameter
+    window.location.href = 'page2.html?tracking=' + encodeURIComponent(trackingNumber);
+  }
+</script>
+<script>
+  const musicBtn = document.getElementById("playMusicBtn");
+  const audio = document.getElementById("myAudio");
+  const volumeControl = document.getElementById("volumeControl");
+
+  let isPlaying = false;
+
+  musicBtn.addEventListener("click", () => {
+    if (!isPlaying) {
+      audio.play();
+      musicBtn.textContent = "⏸ หยุดเพลง";
+    } else {
+      audio.pause();
+      musicBtn.textContent = "▶ เล่นเพลง";
+    }
+    isPlaying = !isPlaying;
+  });
+
+  volumeControl.addEventListener("input", () => {
+    audio.volume = volumeControl.value;
+  });
+</script>
+</body>
+</html>
